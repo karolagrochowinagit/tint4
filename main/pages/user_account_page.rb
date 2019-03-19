@@ -1,8 +1,8 @@
-require_relative '../../../src/main/pages/abstract_page'
-require_relative '../../../src/main/pages/log_in_page'
-require_relative '../../../src/main/pages/payment_page'
-require_relative '../../../src/main/pages/tint_page'
-require_relative '../../../src/main/pages/collaborators_page'
+require_relative './abstract_page'
+require_relative './log_in_page'
+require_relative './payment_page'
+require_relative './tint_page'
+require_relative './collaborators_page'
 
 class UserAccountPage < AbstractPage
 

@@ -1,5 +1,5 @@
 
-require_relative '../../../src/main/pages/abstract_page'
+require_relative './abstract_page'
 
 class CheckoutSingagePage < AbstractPage
 
@@ -27,9 +27,10 @@ class CheckoutSingagePage < AbstractPage
     return CheckoutSingagePage.new(@@driver)
   end
 
-  def coupon_error_msg(message)
-    @@driver.find_element(:class, '.coupon-msg').equal?(message)
-    return CheckoutSingagePage.new(@@driver)
+  def coupon_error_msg
+    wait = Selenium::WebDriver::Wait.new(timeout: 10)
+    wait.until { @@driver.find_element(:css, '.coupon-msg').displayed?}
+    return @@driver.find_element(:css, '.coupon-msg').text
 
   end
 end

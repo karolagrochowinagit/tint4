@@ -1,4 +1,4 @@
-require_relative '../../../src/main/pages/abstract_page'
+require_relative './abstract_page'
 
 class TintPage < AbstractPage
 
@@ -12,23 +12,38 @@ class TintPage < AbstractPage
   end
 
   def tumb_icon
+    wait = Selenium::WebDriver::Wait.new(timeout: 15)
+    wait.until { @@driver.find_element(:css, '.tb > .fab').displayed?}
     @@driver.find_element(:css, '.tb > .fab').click
     return TintPage.new(@@driver)
   end
 
   def hastag_connection
+    wait = Selenium::WebDriver::Wait.new(timeout: 15)
+    wait.until { @@driver.find_element(:css, '.advanced-feed-type-tabedit-content-tb-modal-li-hashtags > a').displayed?}
     @@driver.find_element(:css, '.advanced-feed-type-tabedit-content-tb-modal-li-hashtags > a').click
     return TintPage.new(@@driver)
   end
 
   def hastag_text(hastag)
+    wait = Selenium::WebDriver::Wait.new(timeout: 15)
+    wait.until { @@driver.find_element(:css, '.edit-content-tb-modal-connect-hash-input').displayed?}
     @@driver.find_element(:css, '.edit-content-tb-modal-connect-hash-input').send_keys hastag
     return TintPage.new(@@driver)
   end
 
   def submit_connection
-    @@driver.find_element(:css, '.edit-content-tb-modal-hashtag-moderate-label').click
+    wait = Selenium::WebDriver::Wait.new(timeout: 15)
+    wait.until { @@driver.find_element(:css, '.edit-content-tb-modal-connect-hash-btn').displayed?}
+    @@driver.find_element(:css, '.edit-content-tb-modal-connect-hash-btn').click
     return TintPage.new(@@driver)
+  end
+
+  def added_connection
+    wait = Selenium::WebDriver::Wait.new(timeout: 15)
+    wait.until { @@driver.find_element(:css, '.feed-label-without-prefix').displayed?}
+    return @@driver.find_element(:css, '.feed-label-without-prefix').text
+
   end
 
 end

@@ -1,10 +1,10 @@
 require 'rspec'
 require'selenium-webdriver'
-require_relative '../../../src/main/pages/abstract_page'
-require_relative '../../../src/main/pages/home_page'
-require_relative '../../../src/main/pages/log_in_page'
-require_relative '../../../src/main/pages/user_account_page'
-require_relative '../../../src/main/pages/tint_page'
+require_relative '../../main/pages/abstract_page'
+require_relative '../../main/pages/home_page'
+require_relative '../../main/pages/log_in_page'
+require_relative '../../main/pages/user_account_page'
+require_relative '../../main/pages/tint_page'
 
 describe 'create new tint' do
 
@@ -16,11 +16,11 @@ describe 'create new tint' do
 
   it 'should add new tint - tumblr' do
 
-      app2
+      page2 = app2
           .go_to_home_page
           .click_on_login
-            .user_email('karolagrochowina@gmail.com')
-            .user_password('Karola22')
+            .user_email('')
+            .user_password('')
             .user_remember
             .user_submit
           .add_tint
@@ -28,11 +28,12 @@ describe 'create new tint' do
             .tint_username_submit
             .no_goal
             .no_analytics
-          .go_to_edit_tint
           .tumb_icon
           .hastag_connection
           .hastag_text('pictureoftheday')
+          .submit_connection
 
+      expect('#pictureoftheday').to be == page2.added_connection
 
   end
 

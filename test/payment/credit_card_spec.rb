@@ -1,14 +1,14 @@
 require 'rspec'
 require 'rspec/expectations'
 require 'selenium-webdriver'
-require_relative '../../../src/main/pages/home_page'
-require_relative '../../../src/main/pages/log_in_page'
-require_relative '../../../src/main/pages/abstract_page'
-require_relative '../../../src/main/pages/user_account_page'
-require_relative '../../../src/main/pages/payment_page'
-require_relative '../../../src/main/pages/pricing_page'
-require_relative '../../../src/main/pages/pricing_singage_page'
-require_relative '../../../src/main/pages/checkout_singage_page'
+require_relative '../../main/pages/home_page'
+require_relative '../../main/pages/log_in_page'
+require_relative '../../main/pages/abstract_page'
+require_relative '../../main/pages/user_account_page'
+require_relative '../../main/pages/payment_page'
+require_relative '../../main/pages/pricing_page'
+require_relative '../../main/pages/pricing_singage_page'
+require_relative '../../main/pages/checkout_singage_page'
 
 describe 'go to payment and use voucher' do
 
@@ -20,11 +20,11 @@ describe 'go to payment and use voucher' do
 
   it 'should declined voucher' do
 
-      app
+      page= app
           .go_to_home_page
           .click_on_login
-            .user_email('karolagrochowina@gmail.com')
-            .user_password('Karola22')
+            .user_email('')
+            .user_password('')
             .user_remember
             .user_submit
           .user_account_details
@@ -39,7 +39,7 @@ describe 'go to payment and use voucher' do
           .coupon('212324')
           .apply_coupon
 
-   expect('Invalid Promo Code').to coupon_error_msg
+   expect('Invalid Promo Code').to be == page.coupon_error_msg
 
   end
 

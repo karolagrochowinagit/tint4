@@ -1,6 +1,6 @@
 
-require_relative '../../../src/main/pages/abstract_page'
-require_relative '../../../src/main/pages/checkout_singage_page'
+require_relative './abstract_page'
+require_relative './checkout_singage_page'
 
 
 class PricingSingagePage <AbstractPage

@@ -1,5 +1,5 @@
-require_relative '../../../src/main/pages/abstract_page'
-require_relative '../../../src/main/pages/user_account_page'
+require_relative './abstract_page'
+require_relative './user_account_page'
 
 class LogInPage < AbstractPage
 
